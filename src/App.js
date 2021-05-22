@@ -5,7 +5,6 @@ function App() {
     return (
         <div className="App">
             <Header />
-            <h1>Recipe App</h1>
             <SearchFormComponent />
         </div>
     );

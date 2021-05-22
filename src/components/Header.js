@@ -4,10 +4,10 @@ const Header = () => {
     return (
         <div className="header-container">
             <div className="logo-container">
-                <img src={logo} alt="Recipe Logo" />
+                <img className="logo-icon" src={logo} alt="Recipe Logo" />
             </div>
             <div className="title-container">
-                <h1>Taste It</h1>
+                Taste It
             </div>
             <div className="login-btn-container">
                 <div className="login-btn">
