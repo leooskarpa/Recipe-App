@@ -1,15 +1,26 @@
-body {
+@font-face {
+  font-family: 'Farro';
+  src: local('Farro'), url(./fonts/Farro/Farro-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Lobster';
+  src: url(./fonts/Lobster/Lobster-Regular.ttf) format('truetype');
+}
+
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   padding: 0;
   box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: 'Farro', monospace;
+  font-size: 32px;
+}
+
+.title-container {
+  font-family: 'Lobster', monospace;
+  font-size: 48px;
 }
