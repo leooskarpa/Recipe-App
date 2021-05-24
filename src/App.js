@@ -10,11 +10,12 @@ function App() {
             id: 1,
             name: 'Chicken Piccata',
             pictureUrl: "https://images.themodernproper.com/billowy-turkey/production/posts/2019/Chicken-Picatta-8.jpg?w=1200&auto=compress%2Cformat&fit=crop&fp-x=0.5&fp-y=0.5&dm=1599767276&s=2aa0bf00be2c34de44c1fb93a32ca68f",
+            favourite: false,
             prep: 10,
             cook: 30,
             servings: 6,
             difficulty: 3,
-            brief_desc: "Lemony, caper-topped, and just buttery enough, chicken piccata is an easy weeknight supper that’s easy to love, and so very fast—just ten minutes from sauté pan to table.",
+            briefDesc: "Lemony, caper-topped, and just buttery enough, chicken piccata is an easy weeknight supper that’s easy to love, and so very fast—just ten minutes from sauté pan to table.",
             ingredients: [
                 {
                     name: "Chicken breasts",

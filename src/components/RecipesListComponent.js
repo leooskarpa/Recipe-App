@@ -1,9 +1,11 @@
+import Recipe from "./Recipe";
+
 const RecipesListComponent = ({ recipes }) => {
 
     return (
-        <div className="recipes-container">
+        <div className="recipes-list-container">
             {recipes.map((recipe) => (
-                <h3 key="recipe.id">{recipe.name}</h3>
+                <Recipe recipe={recipe} />
             ))}
         </div>
     );
