@@ -4,6 +4,12 @@
 }
 
 @font-face {
+  font-family: 'Farro-Bold';
+  src: local('Farro-Bold'), url(./fonts/Farro/Farro-Bold.ttf) format('truetype');
+}
+
+
+@font-face {
   font-family: 'Lobster';
   src: url(./fonts/Lobster/Lobster-Regular.ttf) format('truetype');
 }
