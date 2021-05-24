@@ -14,6 +14,10 @@
   src: url(./fonts/Lobster/Lobster-Regular.ttf) format('truetype');
 }
 
+:root {
+  --my-red: #E63746;
+  --my-black: #3E3C3C;
+}
 
 * {
   margin: 0;
@@ -23,10 +27,31 @@
 
 body {
   font-family: 'Farro', monospace;
-  font-size: 32px;
+  font-size: 20px;
+}
+
+.header-container {
+  background-color: var(--my-black);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 50px;
+}
+
+.logo-icon {
+  height: 5rem;
 }
 
 .title-container {
   font-family: 'Lobster', monospace;
   font-size: 48px;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 4px black;
+}
+
+.login-btn-container {
+  text-align: right;
+  color: white;
 }
