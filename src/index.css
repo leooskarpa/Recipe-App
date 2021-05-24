@@ -36,11 +36,13 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 50px;
+  padding: 5px 50px;
 }
 
 .logo-icon {
   height: 5rem;
+  text-shadow: 2px 2px 4px black;
+  filter: drop-shadow(1px 1px 4px black);
 }
 
 .title-container {
