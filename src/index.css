@@ -25,10 +25,12 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Farro', monospace;
+html {
   font-size: 20px;
+  font-family: 'Farro', monospace;
 }
+
+/* Header */
 
 .header-container {
   background-color: var(--my-black);
@@ -40,7 +42,7 @@ body {
 }
 
 .logo-icon {
-  height: 5rem;
+  height: 4rem;
   text-shadow: 2px 2px 4px black;
   filter: drop-shadow(1px 1px 4px black);
 }
@@ -54,6 +56,73 @@ body {
 }
 
 .login-btn-container {
-  text-align: right;
   color: white;
+  font-size: 1rem;
+  justify-self: right;
+  width: fit-content;
+}
+
+.logo-icon:hover,
+.title-container:hover {
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  cursor: pointer;
+  font-size: 1.01rem;
+  text-shadow: 2px 2px 4px black;
+}
+
+/* Search form */
+
+.search-form-container {
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+}
+
+.search-form-grid {
+  width: fit-content;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form-text {
+  border: none;
+  padding: 15px;
+  font-size: 1rem;
+  font-family: inherit;
+  width: 35vw;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.search-form-text:focus {
+  outline: none;
+}
+
+.search-form-button {
+  border: none;
+  color: white;
+  background-color: var(--my-red);
+  padding: 15px;
+  font-size: 1rem;
+  font-family: inherit;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.search-form-button:hover {
+  cursor: pointer;
+}
+
+
+.favourite-icon {
+  height: 1.5rem;
+}
+
+.favourite-icon:hover {
+  cursor: pointer;
 }
