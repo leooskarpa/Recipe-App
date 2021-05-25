@@ -120,8 +120,87 @@ html {
 
 .favourite-icon {
   height: 1.5rem;
+  margin-top: 5px;
 }
 
 .favourite-icon:hover {
   cursor: pointer;
+}
+
+/* Recipe list */
+
+.recipes-list-container {
+  margin: 50px 100px;
+}
+
+.recipe {
+  background-color: white;
+  filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.2));
+}
+
+.recipe-template {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  padding: 20px 0px;
+}
+
+.recipe-picture {
+  align-items: center;
+  justify-self: center;
+}
+
+.recipe-picture-circle {
+  overflow: hidden;
+  display: inline-block;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  vertical-align: middle;
+  filter: drop-shadow(2px 2px 4px black);
+}
+
+.recipe-picture-circle img {
+  width: 8rem;
+  object-fit: cover;
+}
+
+.recipe-name-and-desc-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.recipe-title {
+  font-family: "Farro-Bold", monospace;
+  font-size: 2rem;
+}
+
+.recipe-diff-and-full-time-container {
+  margin-left: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.recipe-diff {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.recipe-diff-icon img {
+  width: 1.25rem;
+}
+
+.recipe-full-time {
+  font-size: 0.9rem;
+}
+
+.summary-list>* {
+  margin-right: 1vw;
+}
+
+.icon {
+  width: 1.2rem;
 }
