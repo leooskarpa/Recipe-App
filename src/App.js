@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Header from './components/Header';
 import RecipesListComponent from './components/RecipesListComponent';
 import SearchFormComponent from './components/searchFormComponent'
+import FullRecipe from './components/FullRecipe'
 
 function App() {
 
@@ -226,6 +227,7 @@ function App() {
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [showFavs, setShowFavs] = useState(false);
+    const [recipeClickedId, setRecipeClickedId] = useState()
 
     const searchRecipes = (newSearchTerm) => {
         setSearchTerm(newSearchTerm);
@@ -247,7 +249,7 @@ function App() {
     }
 
     const recipeClick = (id) => {
-        console.log(id)
+        setRecipeClickedId(id);
     }
 
 
@@ -255,10 +257,18 @@ function App() {
         <div className="App">
             <Router>
                 <Header />
-                <SearchFormComponent searchRecipes={searchRecipes} showFavsClick={showFavsFunc} />
-                <RecipesListComponent recipes={searchResults} switchFav={switchFav} recipeClick={recipeClick} />
+                <Switch>
+                    <Route exact path="/">
+                        <SearchFormComponent searchRecipes={searchRecipes} showFavsClick={showFavsFunc} />
+                        <RecipesListComponent recipes={searchResults} switchFav={switchFav} recipeClick={recipeClick} />
+                    </Route>
+                    <Route path={`/recipe${recipeClickedId}`}>
+                        <FullRecipe />
+                    </Route>
+                </Switch>
             </Router>
         </div>
+
     );
 }
 

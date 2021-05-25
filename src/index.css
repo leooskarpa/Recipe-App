@@ -54,11 +54,6 @@ html {
   text-shadow: 2px 2px 4px black;
 }
 
-.link {
-  text-decoration: none;
-  color: white;
-}
-
 .login-btn-container {
   color: white;
   font-size: 1rem;
