@@ -117,11 +117,11 @@ function App() {
             id: 2,
             name: 'Mexican Rice',
             pictureUrl: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/190412-mexican-rice-horizontal-2-1555972502.png?crop=0.668xw:1.00xh;0.143xw,0&resize=768:*",
-            favourite: false,
+            favourite: true,
             prep: 15,
             cook: 45,
             servings: 8,
-            difficulty: 2,
+            difficulty: 5,
             briefDesc: "This easy recipe for Mexican rice is so full of flavor and better than any we've had from a Tex-Mex restaurant. Make some to go with your chicken enchiladas or tamale pie, and call it a night! ",
             ingredients: [
                 {
@@ -224,6 +224,7 @@ function App() {
 
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
+    const [showFavs, setShowFavs] = useState(false);
 
     const searchRecipes = (newSearchTerm) => {
         setSearchTerm(newSearchTerm);
@@ -233,15 +234,23 @@ function App() {
         const results = !searchTerm ?
             recipes :
             recipes.filter(recipe => recipe.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
-        setSearchResults(results);
-    }, [searchTerm, recipes])
+        setSearchResults(showFavs ? results.filter(recipe => recipe.favourite === showFavs) : results);
+    }, [searchTerm, recipes, showFavs]);
+
+    const showFavsFunc = () => {
+        setShowFavs(!showFavs);
+    }
+
+    const switchFav = (id) => {
+        setRecipes(recipes.map(recipe => recipe.id === id ? { ...recipe, favourite: !recipe.favourite } : recipe));
+    }
 
 
     return (
         <div className="App">
             <Header />
-            <SearchFormComponent searchRecipes={searchRecipes} />
-            <RecipesListComponent recipes={searchResults} />
+            <SearchFormComponent searchRecipes={searchRecipes} showFavsClick={showFavsFunc} />
+            <RecipesListComponent recipes={searchResults} switchFav={switchFav} />
         </div>
     );
 }
