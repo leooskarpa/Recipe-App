@@ -5,7 +5,7 @@ const RecipesListComponent = ({ recipes }) => {
     return (
         <div className="recipes-list-container">
             {recipes.map((recipe) => (
-                <Recipe recipe={recipe} />
+                <Recipe key={recipe.id} recipe={recipe} />
             ))}
         </div>
     );
