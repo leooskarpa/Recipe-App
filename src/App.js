@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 import Header from './components/Header';
 import RecipesListComponent from './components/RecipesListComponent';
 import SearchFormComponent from './components/searchFormComponent'
@@ -245,12 +246,18 @@ function App() {
         setRecipes(recipes.map(recipe => recipe.id === id ? { ...recipe, favourite: !recipe.favourite } : recipe));
     }
 
+    const recipeClick = (id) => {
+        console.log(id)
+    }
+
 
     return (
         <div className="App">
-            <Header />
-            <SearchFormComponent searchRecipes={searchRecipes} showFavsClick={showFavsFunc} />
-            <RecipesListComponent recipes={searchResults} switchFav={switchFav} />
+            <Router>
+                <Header />
+                <SearchFormComponent searchRecipes={searchRecipes} showFavsClick={showFavsFunc} />
+                <RecipesListComponent recipes={searchResults} switchFav={switchFav} recipeClick={recipeClick} />
+            </Router>
         </div>
     );
 }

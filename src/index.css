@@ -50,9 +50,13 @@ html {
 .title-container {
   font-family: 'Lobster', monospace;
   font-size: 48px;
-  color: white;
   text-align: center;
   text-shadow: 2px 2px 4px black;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
 }
 
 .login-btn-container {

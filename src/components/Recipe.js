@@ -4,7 +4,7 @@ import servingsIcon from './images/servings_icon.svg'
 import favouriteIconEmpty from './images/favourite-empty.svg'
 import favouriteIconColored from './images/favourite-colored.svg'
 
-const Recipe = ({ recipe, switchFav }) => {
+const Recipe = ({ recipe, switchFav, recipeClick }) => {
     // var difficulty = [];
 
     // for (let i = 0; i < recipe.difficulty; i++) {
@@ -19,13 +19,13 @@ const Recipe = ({ recipe, switchFav }) => {
         switchFav(recipe.id);
     }
 
-    const handleClick = (id) => {
-        console.log(id)
+    const handleClick = () => {
+        recipeClick(recipe.id)
     }
 
     return (
         <div className="recipe">
-            <div className="recipe-template" onClick={() => handleClick(recipe.id)}>
+            <div className="recipe-template" onClick={handleClick}>
                 <div className="recipe-picture">
                     <div className="recipe-picture-circle">
                         <img src={recipe.pictureUrl} alt={recipe.name} />
