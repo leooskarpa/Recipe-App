@@ -1,4 +1,3 @@
-import diffIcon from './images/difficulty_knife.svg'
 import prepIcon from './images/prep_icon.svg'
 import cookIcon from './images/cook_icon.svg'
 import servingsIcon from './images/servings_icon.svg'
@@ -15,13 +14,18 @@ const Recipe = ({ recipe, switchFav }) => {
     //         </div>)
     // }
 
-    const favorite = (id) => {
-        switchFav(id);
+    const favorite = (e) => {
+        e.stopPropagation();
+        switchFav(recipe.id);
+    }
+
+    const handleClick = (id) => {
+        console.log(id)
     }
 
     return (
         <div className="recipe">
-            <div className="recipe-template">
+            <div className="recipe-template" onClick={() => handleClick(recipe.id)}>
                 <div className="recipe-picture">
                     <div className="recipe-picture-circle">
                         <img src={recipe.pictureUrl} alt={recipe.name} />
@@ -56,7 +60,7 @@ const Recipe = ({ recipe, switchFav }) => {
                         </div>
                     </div>
                     <div className="recipe-set-favourite">
-                        <img className="recipe-set-favourite-icon" onClick={() => favorite(recipe.id)} src={recipe.favourite ? favouriteIconColored : favouriteIconEmpty} alt="Favs icon" />
+                        <img className="recipe-set-favourite-icon" onClick={favorite} src={recipe.favourite ? favouriteIconColored : favouriteIconEmpty} alt="Favs icon" />
                     </div>
                 </div>
             </div>
