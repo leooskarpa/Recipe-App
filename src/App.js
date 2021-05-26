@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Header from './components/Header';
 import RecipesListComponent from './components/RecipesListComponent';
 import SearchFormComponent from './components/searchFormComponent'
-import FullRecipe from './components/FullRecipe'
 
 function App() {
 
@@ -227,7 +226,6 @@ function App() {
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [showFavs, setShowFavs] = useState(false);
-    const [recipeClickedId, setRecipeClickedId] = useState()
 
     const searchRecipes = (newSearchTerm) => {
         setSearchTerm(newSearchTerm);
@@ -248,11 +246,6 @@ function App() {
         setRecipes(recipes.map(recipe => recipe.id === id ? { ...recipe, favourite: !recipe.favourite } : recipe));
     }
 
-    const recipeClick = (id) => {
-        setRecipeClickedId(id);
-    }
-
-
     return (
         <div className="App">
             <Router>
@@ -260,10 +253,7 @@ function App() {
                 <Switch>
                     <Route exact path="/">
                         <SearchFormComponent searchRecipes={searchRecipes} showFavsClick={showFavsFunc} />
-                        <RecipesListComponent recipes={searchResults} switchFav={switchFav} recipeClick={recipeClick} />
-                    </Route>
-                    <Route path={`/recipe${recipeClickedId}`}>
-                        <FullRecipe />
+                        <RecipesListComponent recipes={searchResults} switchFav={switchFav} />
                     </Route>
                 </Switch>
             </Router>

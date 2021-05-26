@@ -231,3 +231,10 @@ html {
 .recipe-set-favourite-icon {
   width: 2rem;
 }
+
+
+/* Full recipe template */
+
+.ReactCollapse--collapse {
+  transition: height 200ms ease-out;
+}
