@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Collapse } from 'react-collapse'
+import Ingredient from './Ingredient'
+import Step from './Step'
 
 import prepIcon from './images/prep_icon.svg'
 import cookIcon from './images/cook_icon.svg'
@@ -25,7 +27,6 @@ const Recipe = ({ recipe, switchFav }) => {
     }
 
     const handleClick = () => {
-        console.log(recipe.id);
         setShowFullRecipe(!showFullRecipe);
     }
 
@@ -73,7 +74,27 @@ const Recipe = ({ recipe, switchFav }) => {
 
             <Collapse isOpened={showFullRecipe}>
                 <div className="full-recipe-template">
-                    <h1>recipe</h1>
+                    <div className="full-recipe-container">
+                        <div className="ingredients-container">
+                            <span className="title-span">Ingredients</span>
+                            <div className="ingredients-list-container">
+                                {recipe.ingredients.map(ingredient =>
+                                    <Ingredient name={ingredient.name} amount={ingredient.amount} unit={ingredient.type} />)
+                                }
+                            </div>
+                        </div>
+                        <div className="steps-container">
+                            <span className="title-span">Steps:</span>
+                            <div className="steps-list-container">
+                                {recipe.method.map(step =>
+                                    <Step stepNo={step.step} desc={step.desc} />)
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div className="recipe-footer-container">
+                        Footer
+                    </div>
                 </div>
             </Collapse>
         </div >
