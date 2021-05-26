@@ -288,6 +288,26 @@ html {
   font-size: 1.25rem;
 }
 
+.breakline-holder {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breakline {
+  height: 2px;
+  width: 90%;
+  background-color: var(--my-black);
+}
+
+.recipe-footer-container {
+  margin-top: 25px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+}
+
 /* Ingredient */
 
 .ingredient-template {
@@ -319,4 +339,31 @@ html {
 
 .step-desc-container {
   line-height: 1.5rem;
+}
+
+/* Footer */
+
+.footer-holder {
+  display: flex;
+  width: 30vw;
+  justify-content: space-evenly;
+}
+
+.footer-btn {
+  color: white;
+  font-size: 1.2rem;
+  padding: 20px 25px;
+  border-radius: 10px;
+}
+
+.footer-btn:hover {
+  cursor: pointer;
+}
+
+.footer-edit-recipe-btn {
+  background-color: var(--my-black);
+}
+
+.footer-delete-recipe-btn {
+  background-color: var(--my-red);
 }

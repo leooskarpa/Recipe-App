@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Collapse } from 'react-collapse'
 import Ingredient from './Ingredient'
 import Step from './Step'
+import Footer from './Footer'
 
 import prepIcon from './images/prep_icon.svg'
 import cookIcon from './images/cook_icon.svg'
@@ -9,7 +10,7 @@ import servingsIcon from './images/servings_icon.svg'
 import favouriteIconEmpty from './images/favourite-empty.svg'
 import favouriteIconColored from './images/favourite-colored.svg'
 
-const Recipe = ({ recipe, switchFav }) => {
+const Recipe = ({ recipe, switchFav, deleteRecipe }) => {
     // var difficulty = [];
 
     // for (let i = 0; i < recipe.difficulty; i++) {
@@ -28,6 +29,10 @@ const Recipe = ({ recipe, switchFav }) => {
 
     const handleClick = () => {
         setShowFullRecipe(!showFullRecipe);
+    }
+
+    const editRecipe = (id) => {
+        console.log(id)
     }
 
     return (
@@ -92,8 +97,11 @@ const Recipe = ({ recipe, switchFav }) => {
                             </div>
                         </div>
                     </div>
+                    <div className="breakline-holder">
+                        <div className="breakline"></div>
+                    </div>
                     <div className="recipe-footer-container">
-                        Footer
+                        <Footer deleteRecipe={() => deleteRecipe(recipe.id)} editRecipe={editRecipe} />
                     </div>
                 </div>
             </Collapse>

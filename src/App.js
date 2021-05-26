@@ -246,6 +246,10 @@ function App() {
         setRecipes(recipes.map(recipe => recipe.id === id ? { ...recipe, favourite: !recipe.favourite } : recipe));
     }
 
+    const deleteRecipe = (id) => {
+        setRecipes(recipes.filter(recipe => recipe.id !== id))
+    }
+
     return (
         <div className="App">
             <Router>
@@ -253,7 +257,7 @@ function App() {
                 <Switch>
                     <Route exact path="/">
                         <SearchFormComponent searchRecipes={searchRecipes} showFavsClick={showFavsFunc} />
-                        <RecipesListComponent recipes={searchResults} switchFav={switchFav} />
+                        <RecipesListComponent recipes={searchResults} switchFav={switchFav} deleteRecipe={deleteRecipe} />
                     </Route>
                 </Switch>
             </Router>
