@@ -6,7 +6,7 @@ const EditIngredient = ({ ingredient, saveIngredient, deleteIngredient }) => {
 
     const [newName, setNewName] = useState(ingredient.name)
     const [newAmount, setNewAmount] = useState(ingredient.amount)
-    const [newUnit, setNewUnit] = useState(ingredient.unit)
+    const [newUnit, setNewUnit] = useState(ingredient.type)
 
     return (
         <div className="edit-ingredient-template">

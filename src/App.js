@@ -252,6 +252,7 @@ function App() {
         }
     ]);
 
+    const [loged, setLoged] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [showFavs, setShowFavs] = useState(false);
@@ -278,6 +279,10 @@ function App() {
             desc: ""
         }]
     };
+
+    const isLoged = () => {
+        setLoged(!loged);
+    }
 
     const searchRecipes = (newSearchTerm) => {
         setSearchTerm(newSearchTerm);
@@ -326,13 +331,13 @@ function App() {
     return (
         <div className="App">
             <Router>
-                <Header />
+                <Header loged={loged} logOut={() => setLoged(!loged)} />
                 <Switch>
                     <Route exact path="/">
                         <Redirect to="/login" />
                     </Route>
                     <Route exact path="/login">
-                        <Login />
+                        <Login isLoged={isLoged} />
                     </Route>
                     <Route exact path="/home">
                         <SearchFormComponent

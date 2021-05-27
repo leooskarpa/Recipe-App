@@ -1,7 +1,12 @@
 import logo from './images/recipe.svg'
-import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
-const Header = () => {
+const Header = ({ loged, logOut }) => {
+
+    const logOutClick = () => {
+        logOut();
+    }
+
     return (
         <div className="header-container">
             <div className="logo-container">
@@ -11,12 +16,14 @@ const Header = () => {
                 Taste It
             </div>
             <div className="login-btn-container">
-                <Link className="login-link" to="/login">
-                    <div className="login-btn">
-                        Log Out
-                    </div>
-                </Link>
+                {loged &&
+                    <div className="login-link">
+                        <div className="login-btn" onClick={logOutClick}>
+                            Log Out
+                        </div>
+                    </div>}
             </div>
+            {!loged && <Redirect to="/login" />}
         </div>
     );
 }
