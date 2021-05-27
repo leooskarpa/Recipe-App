@@ -367,3 +367,129 @@ html {
 .footer-delete-recipe-btn {
   background-color: var(--my-red);
 }
+
+/* Edit recipe */
+
+.edit-recipe-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-recipe-template {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.left-edit-pane {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10vw;
+  margin-top: 50px;
+}
+
+.edit-header-title {
+  margin-bottom: 50px;
+  font-size: 2rem;
+  font-family: "Farro-Bold", monospace;
+  color: var(--my-red);
+}
+
+.edit-text-input {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 1rem;
+  font-family: "Farro", monospace;
+  padding: 5px;
+  display: flex;
+}
+
+.edit-input-number {
+  margin-left: 2vw;
+  margin-bottom: 30px;
+  font-size: 1rem;
+  font-family: "Farro", monospace;
+}
+
+.edit-icon {
+  width: 1.2rem;
+  margin-right: 0.5vw;
+}
+
+.right-edit-pane {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10vw;
+  margin-top: 150px;
+}
+
+.edit-ingredient-template {
+  margin-top: 20px;
+  margin-right: 5vw;
+  display: flex;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.edit-ingredient-container {
+  display: grid;
+  margin-left: 2vw;
+}
+
+.edit-ingredient-amount-holder {
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+}
+
+.little-input {
+  width: 55px;
+  margin-left: 5px;
+  transform: translateY(25%);
+}
+
+.edit-ingredient-type-holder {
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+}
+
+.edit-ingredient-save-btn {
+  grid-row: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.save-btn {
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  padding: 20px 25px;
+  border-radius: 10px;
+  background-color: rgb(5, 203, 5);
+}
+
+.save-btn:hover {
+  cursor: pointer;
+}
+
+.edit-add-ingredient {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5vw;
+  margin-top: 10px;
+}
+
+.add-ingredient-btn {
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  padding: 20px 25px;
+  border-radius: 10px;
+  background-color: var(--my-black);
+}
+
+.add-ingredient-btn:hover {
+  cursor: pointer;
+}

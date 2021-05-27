@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Header from './components/Header';
 import RecipesListComponent from './components/RecipesListComponent';
 import SearchFormComponent from './components/searchFormComponent'
+import EditRecipe from './components/EditRecipe'
 
 function App() {
 
@@ -19,61 +20,73 @@ function App() {
             briefDesc: "Lemony, caper-topped, and just buttery enough, chicken piccata is an easy weeknight supper that’s easy to love, and so very fast—just ten minutes from sauté pan to table.",
             ingredients: [
                 {
+                    id: 1,
                     name: "Chicken breasts",
                     amount: 2,
                     type: 'lbs'
                 },
                 {
+                    id: 2,
                     name: "Salt",
                     amount: 2.5,
                     type: 'tsp'
                 },
                 {
+                    id: 3,
                     name: "Pepper",
                     amount: 0.5,
                     type: 'tsp'
                 },
                 {
+                    id: 4,
                     name: "Flour",
                     amount: 1,
                     type: 'cup'
                 },
                 {
+                    id: 5,
                     name: "Butter, cut in pieces",
                     amount: 10,
                     type: 'tbsp'
                 },
                 {
+                    id: 6,
                     name: "Olive oil",
                     amount: 4,
                     type: 'tbsp'
                 },
                 {
+                    id: 7,
                     name: "Shallot, minced",
                     amount: 1,
                     type: ''
                 },
                 {
+                    id: 8,
                     name: "Garlic, minced",
                     amount: 1,
                     type: ''
                 },
                 {
+                    id: 9,
                     name: "Chicken stock",
                     amount: 1.5,
                     type: 'cup'
                 },
                 {
+                    id: 10,
                     name: "Lemon, juiced",
                     amount: 1,
                     type: ''
                 },
                 {
+                    id: 11,
                     name: "Lemon zest",
                     amount: 2,
                     type: 'tsp'
                 },
                 {
+                    id: 12,
                     name: "Capers, drained",
                     amount: 2,
                     type: 'tbsp'
@@ -126,76 +139,91 @@ function App() {
             briefDesc: "This easy recipe for Mexican rice is so full of flavor and better than any we've had from a Tex-Mex restaurant. Make some to go with your chicken enchiladas or tamale pie, and call it a night! ",
             ingredients: [
                 {
+                    id: 1,
                     name: "Extra-virgin olive oil",
                     amount: 3,
                     type: 'tbsp'
                 },
                 {
+                    id: 2,
                     name: "Carrots, diced",
                     amount: 2,
                     type: ''
                 },
                 {
+                    id: 3,
                     name: "Small green bell pepper, diced",
                     amount: 1,
                     type: ''
                 },
                 {
+                    id: 4,
                     name: "Small onion, chopped",
                     amount: 1,
                     type: ''
                 },
                 {
+                    id: 5,
                     name: "Garlic cloves, thinly sliced",
                     amount: 3,
                     type: ''
                 },
                 {
+                    id: 6,
                     name: "Long-grain rice",
                     amount: 2,
                     type: 'cup'
                 },
                 {
+                    id: 7,
                     name: "Tomato paste",
                     amount: 1,
                     type: 'tbsp'
                 },
                 {
+                    id: 8,
                     name: "Low-sodium chicken broth",
                     amount: 2.5,
                     type: 'cup'
                 },
                 {
+                    id: 9,
                     name: "Fire-roasted diced tomatoes",
                     amount: 14,
                     type: 'oz'
                 },
                 {
+                    id: 10,
                     name: "Tomato sauce",
                     amount: 8,
                     type: 'oz'
                 },
                 {
+                    id: 11,
                     name: "Ground cumin",
                     amount: 0.75,
                     type: 'tsp'
                 },
                 {
+                    id: 12,
                     name: "Dried oregano",
                     amount: 0.5,
                     type: 'tsp'
                 },
                 {
+                    id: 13,
                     name: "Kosher salt",
                     amount: 0,
                     type: ''
                 },
                 {
+                    id: 14,
                     name: "Black pepper",
                     amount: 0,
                     type: ''
                 },
                 {
+                    id: 15,
                     name: "Cilantro, chopped",
                     amount: 0.25,
                     type: 'cup'
@@ -226,6 +254,7 @@ function App() {
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [showFavs, setShowFavs] = useState(false);
+    const [editRecipeId, setEditRecipeId] = useState(0);
 
     const searchRecipes = (newSearchTerm) => {
         setSearchTerm(newSearchTerm);
@@ -250,6 +279,10 @@ function App() {
         setRecipes(recipes.filter(recipe => recipe.id !== id))
     }
 
+    const editRecipe = (id) => {
+        setEditRecipeId(id);
+    }
+
     return (
         <div className="App">
             <Router>
@@ -257,7 +290,13 @@ function App() {
                 <Switch>
                     <Route exact path="/">
                         <SearchFormComponent searchRecipes={searchRecipes} showFavsClick={showFavsFunc} />
-                        <RecipesListComponent recipes={searchResults} switchFav={switchFav} deleteRecipe={deleteRecipe} />
+                        {editRecipeId ?
+                            <EditRecipe recipe={recipes.filter(recipe => recipe.id === editRecipeId)[0]} /> :
+                            <RecipesListComponent
+                                recipes={searchResults}
+                                switchFav={switchFav}
+                                deleteRecipe={deleteRecipe}
+                                editRecipe={editRecipe} />}
                     </Route>
                 </Switch>
             </Router>

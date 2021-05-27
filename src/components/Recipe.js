@@ -10,7 +10,7 @@ import servingsIcon from './images/servings_icon.svg'
 import favouriteIconEmpty from './images/favourite-empty.svg'
 import favouriteIconColored from './images/favourite-colored.svg'
 
-const Recipe = ({ recipe, switchFav, deleteRecipe }) => {
+const Recipe = ({ recipe, switchFav, deleteRecipe, editRecipe }) => {
     // var difficulty = [];
 
     // for (let i = 0; i < recipe.difficulty; i++) {
@@ -31,8 +31,8 @@ const Recipe = ({ recipe, switchFav, deleteRecipe }) => {
         setShowFullRecipe(!showFullRecipe);
     }
 
-    const editRecipe = (id) => {
-        console.log(id)
+    const editModeFunc = () => {
+        editRecipe(recipe.id)
     }
 
     return (
@@ -84,7 +84,7 @@ const Recipe = ({ recipe, switchFav, deleteRecipe }) => {
                             <span className="title-span">Ingredients</span>
                             <div className="ingredients-list-container">
                                 {recipe.ingredients.map(ingredient =>
-                                    <Ingredient name={ingredient.name} amount={ingredient.amount} unit={ingredient.type} />)
+                                    <Ingredient key={ingredient.id} name={ingredient.name} amount={ingredient.amount} unit={ingredient.type} />)
                                 }
                             </div>
                         </div>
@@ -92,7 +92,7 @@ const Recipe = ({ recipe, switchFav, deleteRecipe }) => {
                             <span className="title-span">Steps:</span>
                             <div className="steps-list-container">
                                 {recipe.method.map(step =>
-                                    <Step stepNo={step.step} desc={step.desc} />)
+                                    <Step key={step.step} stepNo={step.step} desc={step.desc} />)
                                 }
                             </div>
                         </div>
@@ -101,7 +101,8 @@ const Recipe = ({ recipe, switchFav, deleteRecipe }) => {
                         <div className="breakline"></div>
                     </div>
                     <div className="recipe-footer-container">
-                        <Footer deleteRecipe={() => deleteRecipe(recipe.id)} editRecipe={editRecipe} />
+                        <Footer deleteRecipe={() => deleteRecipe(recipe.id)}
+                            editRecipe={editModeFunc} />
                     </div>
                 </div>
             </Collapse>
