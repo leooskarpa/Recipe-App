@@ -436,6 +436,21 @@ html {
   margin-left: 2vw;
 }
 
+.edit-ingredient-delete-btn-holder {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.delete-ingredient-btn {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-ingredient-btn:hover {
+  cursor: pointer;
+}
+
 .edit-ingredient-amount-holder {
   grid-row: 2;
   display: flex;
@@ -491,5 +506,27 @@ html {
 }
 
 .add-ingredient-btn:hover {
+  cursor: pointer;
+}
+
+.save-btn-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  margin-top: 50px;
+  padding-bottom: 90px;
+}
+
+.save-changes-btn {
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  padding: 20px 25px;
+  border-radius: 10px;
+  background-color: var(--my-red);
+}
+
+.save-changes-btn:hover {
   cursor: pointer;
 }

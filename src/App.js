@@ -283,6 +283,11 @@ function App() {
         setEditRecipeId(id);
     }
 
+    const changeRecipe = (id, newRecipe) => {
+        setEditRecipeId(0);
+        setRecipes(recipes.map(recipe => recipe.id === id ? newRecipe : recipe))
+    }
+
     return (
         <div className="App">
             <Router>
@@ -291,7 +296,9 @@ function App() {
                     <Route exact path="/">
                         <SearchFormComponent searchRecipes={searchRecipes} showFavsClick={showFavsFunc} />
                         {editRecipeId ?
-                            <EditRecipe recipe={recipes.filter(recipe => recipe.id === editRecipeId)[0]} /> :
+                            <EditRecipe
+                                recipe={recipes.filter(recipe => recipe.id === editRecipeId)[0]}
+                                changeRecipe={changeRecipe} /> :
                             <RecipesListComponent
                                 recipes={searchResults}
                                 switchFav={switchFav}

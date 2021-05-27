@@ -3,13 +3,11 @@ import { useState } from 'react'
 import prepIcon from './images/prep_icon.svg'
 import cookIcon from './images/cook_icon.svg'
 import servingsIcon from './images/servings_icon.svg'
-import favouriteIconEmpty from './images/favourite-empty.svg'
-import favouriteIconColored from './images/favourite-colored.svg'
 
 import EditIngredient from './EditIngredient'
 import EditStep from './EditStep'
 
-const EditRecipe = ({ recipe }) => {
+const EditRecipe = ({ recipe, changeRecipe }) => {
 
     const [title, setTitle] = useState(recipe.name)
     const [desc, setDesc] = useState(recipe.briefDesc)
@@ -20,8 +18,22 @@ const EditRecipe = ({ recipe }) => {
     const [servings, setServings] = useState(recipe.servings)
     const [ingredients, setIngredients] = useState(recipe.ingredients)
 
-    const onSubmit = () => {
+    const saveChanges = () => {
+        const newRecipe = {
+            id: recipe.id,
+            name: title,
+            pictureUrl: imageUrl,
+            favourite: recipe.favourite,
+            prep: prep,
+            cook: cook,
+            servings: servings,
+            difficulty: difficulty,
+            briefDesc: desc,
+            ingredients: ingredients,
+            method: recipe.method
+        };
 
+        changeRecipe(recipe.id, newRecipe)
     }
 
     const saveIngredient = (id, newName, newAmount, newUnit) => {
@@ -33,6 +45,10 @@ const EditRecipe = ({ recipe }) => {
         }
         setIngredients(ingredients.map(ingredient =>
             ingredient.id === id ? newIngredient : ingredient))
+    }
+
+    const deleteIngredient = (id) => {
+        setIngredients(ingredients.filter(ingredient => ingredient.id !== id));
     }
 
     const addIngredient = () => {
@@ -51,7 +67,7 @@ const EditRecipe = ({ recipe }) => {
 
     return (
         <div className="edit-recipe-container">
-            <form onSubmit={onSubmit}>
+            <form onSubmit={changeRecipe}>
                 <div className="recipe">
                     <div className="edit-recipe-template">
                         <div className="left-edit-pane">
@@ -132,6 +148,7 @@ const EditRecipe = ({ recipe }) => {
                                         key={ingredient.id}
                                         ingredient={ingredient}
                                         saveIngredient={saveIngredient}
+                                        deleteIngredient={deleteIngredient}
                                     />
                                 )}
 
@@ -141,6 +158,15 @@ const EditRecipe = ({ recipe }) => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                    </div>
+                    <div className="breakline-holder">
+                        <div className="breakline"></div>
+                    </div>
+                    <div className="save-btn-holder">
+                        <div className="save-changes-btn" onClick={saveChanges}>
+                            SAVE
                         </div>
                     </div>
                 </div>

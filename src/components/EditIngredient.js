@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import ingredientIcon from './images/ingredient-icon.svg'
+import deleteIngredientIcon from './images/delete-ingredient.svg'
 
-const EditIngredient = ({ ingredient, saveIngredient }) => {
+const EditIngredient = ({ ingredient, saveIngredient, deleteIngredient }) => {
 
     const [newName, setNewName] = useState(ingredient.name)
     const [newAmount, setNewAmount] = useState(ingredient.amount)
@@ -19,6 +20,14 @@ const EditIngredient = ({ ingredient, saveIngredient }) => {
                         className="edit-text-input"
                         value={newName}
                         onChange={(e) => setNewName(e.target.value)} />
+                </div>
+                <div className="edit-ingredient-delete-btn-holder">
+                    <div className="delete-ingredient-btn">
+                        <img className="ingredient-icon"
+                            src={deleteIngredientIcon}
+                            alt="Delete"
+                            onClick={() => deleteIngredient(ingredient.id)} />
+                    </div>
                 </div>
                 <div className="edit-ingredient-amount-holder">
                     <span>Amount:</span>
