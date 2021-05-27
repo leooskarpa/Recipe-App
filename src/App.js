@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import Header from './components/Header';
 import RecipesListComponent from './components/RecipesListComponent';
 import SearchFormComponent from './components/searchFormComponent'
 import EditRecipe from './components/EditRecipe'
+import Login from './components/Login'
 
 function App() {
 
@@ -255,6 +256,28 @@ function App() {
     const [searchResults, setSearchResults] = useState([]);
     const [showFavs, setShowFavs] = useState(false);
     const [editRecipeId, setEditRecipeId] = useState(0);
+    const [addNewRecipeId, setAddNewRecipeId] = useState(0);
+    const newRecipeTemplate = {
+        id: recipes.length + 1,
+        name: "",
+        pictureUrl: "",
+        favourite: false,
+        prep: "",
+        cook: "",
+        servings: "",
+        difficulty: "",
+        briefDesc: "",
+        ingredients: [{
+            id: 1,
+            name: "",
+            amount: "",
+            type: ""
+        }],
+        method: [{
+            step: 1,
+            desc: ""
+        }]
+    };
 
     const searchRecipes = (newSearchTerm) => {
         setSearchTerm(newSearchTerm);
@@ -269,6 +292,14 @@ function App() {
 
     const showFavsFunc = () => {
         setShowFavs(!showFavs);
+    }
+
+    const addNewRecipe = () => {
+        setAddNewRecipeId(recipes.length + 1);
+    }
+
+    const cancelAdd = () => {
+        setAddNewRecipeId(0);
     }
 
     const switchFav = (id) => {
@@ -298,8 +329,27 @@ function App() {
                 <Header />
                 <Switch>
                     <Route exact path="/">
-                        <SearchFormComponent searchRecipes={searchRecipes} showFavsClick={showFavsFunc} />
-                        {editRecipeId ?
+                        <Redirect to="/login" />
+                    </Route>
+                    <Route exact path="/login">
+                        <Login />
+                    </Route>
+                    <Route exact path="/home">
+                        <SearchFormComponent
+                            searchRecipes={searchRecipes}
+                            showFavsClick={showFavsFunc}
+                            addNewRecipeFunc={addNewRecipe}
+                            cancelNewRecipeFunc={cancelAdd} />
+
+                        {addNewRecipeId ?
+                            <EditRecipe
+                                recipe={newRecipeTemplate}
+                                changeRecipe={changeRecipe}
+                                cancelChanges={cancelAdd} /> :
+                            null
+                        }
+
+                        {(editRecipeId && !addNewRecipeId) ?
                             <EditRecipe
                                 recipe={recipes.filter(recipe => recipe.id === editRecipeId)[0]}
                                 changeRecipe={changeRecipe}
@@ -308,7 +358,8 @@ function App() {
                                 recipes={searchResults}
                                 switchFav={switchFav}
                                 deleteRecipe={deleteRecipe}
-                                editRecipe={editRecipe} />}
+                                editRecipe={editRecipe} />
+                        }
                     </Route>
                 </Switch>
             </Router>

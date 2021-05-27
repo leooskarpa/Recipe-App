@@ -5,7 +5,6 @@ import cookIcon from './images/cook_icon.svg'
 import servingsIcon from './images/servings_icon.svg'
 
 import EditIngredient from './EditIngredient'
-import EditStep from './EditStep'
 
 const EditRecipe = ({ recipe, changeRecipe, cancelChanges }) => {
 
@@ -129,7 +128,7 @@ const EditRecipe = ({ recipe, changeRecipe, cancelChanges }) => {
                                 </div>
                                 <div className="edit-servings-holder">
                                     <label htmlFor="servings">
-                                        <img className="edit-icon" src={prepIcon} alt="Servings icon" />
+                                        <img className="edit-icon" src={servingsIcon} alt="Servings icon" />
                                         <span>Servings:</span>
                                     </label>
                                     <input name="servings"

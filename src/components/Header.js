@@ -5,17 +5,17 @@ const Header = () => {
     return (
         <div className="header-container">
             <div className="logo-container">
-                <Link to="/">
-                    <img className="logo-icon" src={logo} alt="Recipe Logo" />
-                </Link>
+                <img className="logo-icon" src={logo} alt="Recipe Logo" />
             </div>
             <div className="title-container">
-                <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Taste It</Link>
+                Taste It
             </div>
             <div className="login-btn-container">
-                <div className="login-btn">
-                    Log In
-                </div>
+                <Link className="login-link" to="/login">
+                    <div className="login-btn">
+                        Log Out
+                    </div>
+                </Link>
             </div>
         </div>
     );
