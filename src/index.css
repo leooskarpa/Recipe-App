@@ -509,13 +509,36 @@ html {
   cursor: pointer;
 }
 
-.save-btn-holder {
+.edit-footer {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.edit-buttons-holder {
+  width: 30vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.edit-btn-holder {
   height: 100px;
   margin-top: 50px;
   padding-bottom: 90px;
+}
+
+.cancel-changes-btn {
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  padding: 20px 25px;
+  border-radius: 10px;
+  background-color: var(--my-black);
+}
+
+.cancel-changes-btn:hover {
+  cursor: pointer;
 }
 
 .save-changes-btn {

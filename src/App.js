@@ -288,6 +288,10 @@ function App() {
         setRecipes(recipes.map(recipe => recipe.id === id ? newRecipe : recipe))
     }
 
+    const cancelEdit = () => {
+        setEditRecipeId(0);
+    }
+
     return (
         <div className="App">
             <Router>
@@ -298,7 +302,8 @@ function App() {
                         {editRecipeId ?
                             <EditRecipe
                                 recipe={recipes.filter(recipe => recipe.id === editRecipeId)[0]}
-                                changeRecipe={changeRecipe} /> :
+                                changeRecipe={changeRecipe}
+                                cancelChanges={cancelEdit} /> :
                             <RecipesListComponent
                                 recipes={searchResults}
                                 switchFav={switchFav}

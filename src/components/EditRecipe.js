@@ -7,7 +7,7 @@ import servingsIcon from './images/servings_icon.svg'
 import EditIngredient from './EditIngredient'
 import EditStep from './EditStep'
 
-const EditRecipe = ({ recipe, changeRecipe }) => {
+const EditRecipe = ({ recipe, changeRecipe, cancelChanges }) => {
 
     const [title, setTitle] = useState(recipe.name)
     const [desc, setDesc] = useState(recipe.briefDesc)
@@ -164,9 +164,18 @@ const EditRecipe = ({ recipe, changeRecipe }) => {
                     <div className="breakline-holder">
                         <div className="breakline"></div>
                     </div>
-                    <div className="save-btn-holder">
-                        <div className="save-changes-btn" onClick={saveChanges}>
-                            SAVE
+                    <div className="edit-footer">
+                        <div className="edit-buttons-holder">
+                            <div className="edit-btn-holder">
+                                <div className="cancel-changes-btn" onClick={cancelChanges}>
+                                    Cancel
+                            </div>
+                            </div>
+                            <div className="edit-btn-holder">
+                                <div className="save-changes-btn" onClick={saveChanges}>
+                                    Save
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
