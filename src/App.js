@@ -95,34 +95,42 @@ function App() {
             ],
             method: [
                 {
+                    id: 1,
                     step: 1,
                     desc: "Season the chicken with 2 teaspoons salt and pepper on both sides. Place the flour on a plate. Dredge the chicken in the flour and shake off any excess. Discard the flour when finished dredging."
                 },
                 {
+                    id: 2,
                     step: 2,
                     desc: "Heat 3 tablespoons butter and 2 tablespoons oil in a large skillet set over medium-high until the butter has melted."
                 },
                 {
+                    id: 3,
                     step: 3,
                     desc: "Working in batches, taking care not to crowd the pan, add half of the chicken and sauté until golden brown, about 2.5 - 3 minutes per side, until cooked through. Set the chicken aside on a plate when they finish cooking."
                 },
                 {
+                    id: 4,
                     step: 4,
                     desc: "Add 3 more tablespoons of butter and 2 more tablespoons of olive oil and finish cooking the 2nd batch of chicken."
                 },
                 {
+                    id: 5,
                     step: 5,
                     desc: "Add the shallot to the pan drippings and sauté until soft and fragrant, about 1 minute. Add garlic and saute for 1 minute longer."
                 },
                 {
+                    id: 6,
                     step: 6,
                     desc: "Add the stock and simmer until reduced by half, about 4-5 minutes."
                 },
                 {
+                    id: 7,
                     step: 7,
                     desc: "Reduce heat to low, then stir in the remaining 4 tablespoons butter, capers, lemon juice, and zest to taste. Season with remaining half teaspoon of salt. Garnish with parsley if using."
                 },
                 {
+                    id: 8,
                     step: 8,
                     desc: "Serve the chicken with the piccata sauce poured over the top of the pan-fried chicken, alongside your favorite pasta or salad."
                 }
@@ -233,18 +241,22 @@ function App() {
             ],
             method: [
                 {
+                    id: 1,
                     step: 1,
                     desc: "In a large skillet over medium-high heat, heat oil. Add carrots, bell pepper, onion, and garlic, and cook, stirring frequently, until onions have become translucent, about 5 minutes. Add rice and tomato paste and cook, stirring, until grains are toasted, 2 to 3 minutes."
                 },
                 {
+                    id: 2,
                     step: 2,
                     desc: "Pour in broth, diced tomatoes, and tomato sauce and season with cumin, oregano, 1 teaspoon salt, and ½ teaspoon pepper. Bring to a boil. Cover and reduce heat to low."
                 },
                 {
+                    id: 3,
                     step: 3,
                     desc: "Simmer until rice is cooked through and liquid is absorbed, stirring occasionally, about 17 minutes."
                 },
                 {
+                    id: 4,
                     step: 4,
                     desc: "Stir in cilantro before serving."
                 }
@@ -275,6 +287,7 @@ function App() {
             type: ""
         }],
         method: [{
+            id: 1,
             step: 1,
             desc: ""
         }]

@@ -5,6 +5,7 @@ import cookIcon from './images/cook_icon.svg'
 import servingsIcon from './images/servings_icon.svg'
 
 import EditIngredient from './EditIngredient'
+import EditStep from './EditStep'
 
 const EditRecipe = ({ recipe, changeRecipe, cancelChanges }) => {
 
@@ -16,6 +17,7 @@ const EditRecipe = ({ recipe, changeRecipe, cancelChanges }) => {
     const [cook, setCook] = useState(recipe.cook)
     const [servings, setServings] = useState(recipe.servings)
     const [ingredients, setIngredients] = useState(recipe.ingredients)
+    const [steps, setSteps] = useState(recipe.method)
 
     const saveChanges = () => {
         const newRecipe = {
@@ -29,7 +31,7 @@ const EditRecipe = ({ recipe, changeRecipe, cancelChanges }) => {
             difficulty: difficulty,
             briefDesc: desc,
             ingredients: ingredients,
-            method: recipe.method
+            method: steps
         };
 
         changeRecipe(recipe.id, newRecipe)
@@ -61,7 +63,55 @@ const EditRecipe = ({ recipe, changeRecipe, cancelChanges }) => {
         };
 
         setIngredients([...ingredients, newIngredient]);
-        console.log(ingredients.length)
+    }
+
+    const saveStep = (id, stepId, newDesc) => {
+        const newStep = {
+            id: id,
+            step: stepId,
+            desc: newDesc
+        };
+
+        setSteps(steps.map(step =>
+            step.step === stepId ? newStep : step));
+    }
+
+    const deleteStep = (id) => {
+        setSteps(steps.filter(step => step.step !== id))
+
+        // let newSteps = [];
+
+        // for (let i = 1; i < steps.length + 1; i++) {
+        //     if (i < id) {
+        //         newSteps.push(steps[i - 1])
+        //     }
+        //     else if (i > id) {
+        //         newSteps.push({ id: steps[i - 1].id, step: i - 1, desc: steps[i - 1].desc })
+        //     }
+        // }
+
+        // setSteps(newSteps)
+
+
+
+        // setSteps(steps.map(step => step.step < id ? step : step.step === id ? { id: 0, step: 0, desc: "" } : { id: step.id, step: step.step - 1, desc: step.desc })
+        //     .filter(step => step.step !== 0));
+    }
+
+    // useEffect(() => {
+    //     console.log('Hej', steps)
+    // }, [steps])
+
+    const addStep = () => {
+        const lastId = steps.length;
+
+        const newStep = {
+            id: lastId + 1,
+            step: lastId + 1,
+            desc: ""
+        }
+
+        setSteps([...steps, newStep]);
     }
 
     return (
@@ -136,6 +186,24 @@ const EditRecipe = ({ recipe, changeRecipe, cancelChanges }) => {
                                         type="text"
                                         value={servings}
                                         onChange={(e) => setServings(e.target.value)} />
+                                </div>
+                            </div>
+                            <div className="edit-steps-container">
+                                <div className="edit-steps-title-holder">
+                                    Steps:
+                                </div>
+                                {steps.map(step =>
+                                    <EditStep
+                                        key={step.id}
+                                        step={step}
+                                        saveStep={saveStep}
+                                        deleteStep={deleteStep} />
+                                )}
+
+                                <div className="edit-add-ingredient">
+                                    <div className="add-ingredient-btn" onClick={addStep}>
+                                        Add Step
+                                    </div>
                                 </div>
                             </div>
                         </div>
